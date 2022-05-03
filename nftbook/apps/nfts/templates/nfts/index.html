@@ -1,10 +1,24 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  {% block title %} Home {% endblock title %}
 </head>
 <body>
-  <h1>Hello World</h1>
+{% block content %}
+  <!-- ======= What We Do Section ======= -->
+  <section id="what-we-do" class="what-we-do">
+    <div class="container">
+      <div class="section-title">
+        <h2>Know the NFTs</h2>
+        <p>A simple Wiki and its API for each NFT wiki for the popular NFTs</p>
+      </div>
+    </div>
+  </section>
+  <!-- End What We Do Section -->
+  {% include "nfts/includes/trending-nfts-section.html" %}
+  {% include "nfts/includes/upcoming-nfts-section.html" %}
+{% endblock content %}
 </body>
 </html>
