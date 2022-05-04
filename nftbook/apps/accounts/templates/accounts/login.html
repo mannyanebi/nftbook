@@ -1,10 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
 
-</body>
-</html>
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+  <!-- ======= Login Section ======= -->
+  <section id="contact" class="contact mt-4 section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Login</h2>
+      </div>
+
+      <div class="row mt-5 justify-content-center">
+        <div class="col-lg-6">
+        {% if form.errors %}
+          <div class="alert alert-warning shadow" role="alert"
+               style="border-left:#856404 5px solid;  border-radius: 0px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="True" style="color:#856404">&times;</span>
+            </button>
+            <div class="row">
+              <p style="font-size:18px" class="mb-0 font-weight-light"><b class="mr-1">Warning:</b>Your username and
+                password didn't match. Please try again..</p>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if next %}
+          <div class="alert alert-danger">
+            {% if user.is_authenticated %}
+              <div class="alert alert-warning shadow" role="alert"
+                   style="border-left:#856404 5px solid;  border-radius: 0px">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="True" style="color:#856404">&times;</span>
+                </button>
+                <div class="row">
+                  <svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="m-1 bi bi-cone-striped"
+                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.97 4.88l.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/>
+                  </svg>
+                  <p style="font-size:18px" class="mb-0 font-weight-light"><b class="mr-1">Warning:</b>Your account
+                    doesn't have access to this page. To proceed,
+                    please login with an account that has access.</p>
+                </div>
+              </div>
+            {% else %}
+              <div class="alert alert-warning shadow" role="alert"
+                   style="border-left:#856404 5px solid;  border-radius: 0px">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="True" style="color:#856404">&times;</span>
+                </button>
+                <div class="row">
+                  <svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="m-1 bi bi-cone-striped"
+                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.97 4.88l.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/>
+                  </svg>
+                  <p style="font-size:18px" class="mb-0 font-weight-light"><b class="mr-1">Warning:</b>Please login to
+                    see this page.</p>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+          <form action={% url "accounts:login" %} method="post" role="form" class="php-email-form">
+            {% csrf_token %}
+            <div class="form-group mt-3">
+              {{ form.username|add_class:"form-control"|as_crispy_field }}
+            </div>
+            <div class="form-group mt-3">
+              {{ form.password|add_class:"form-control"|as_crispy_field }}
+            </div>
+            <input type="hidden" name="next" value="{{ next }}">
+            <div class="mt-4">
+              <div class="text-center">
+                <button type="submit">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Login Section -->
+{% endblock content %}

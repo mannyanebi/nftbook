@@ -34,6 +34,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    # Django Crispy Forms
+    "crispy_forms",
+    "widget_tweaks",
+
     "nftbook.apps.nfts",
     "nftbook.apps.accounts",
 ]
@@ -154,6 +158,8 @@ MEDIA_ROOT = BASE_DIR.parent.parent / "media"
 # ==============================================================================
 # THIRD-PARTY SETTINGS
 # ==============================================================================
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = "accounts:dashboard"
 
 
 # ==============================================================================

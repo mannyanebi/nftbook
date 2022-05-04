@@ -48,10 +48,10 @@
 
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-        <li><a class="nav-link scrollto" href="#testimonials">Trending NFTs</a></li>
-        <li><a class="nav-link scrollto" href="#portfolio">Upcoming NFTs</a></li>
-        <li><a class="nav-link scrollto" href="#">Login</a></li>
+        <li><a class="nav-link scrollto active" href={% url "nfts:home" %}>Home</a></li>
+        <li><a class="nav-link scrollto" href="/#testimonials">Trending NFTs</a></li>
+        <li><a class="nav-link scrollto" href="/#portfolio">Upcoming NFTs</a></li>
+        <li><a class="nav-link scrollto" href={% url "accounts:login" %}>Login</a></li>
 {#        <li><a class="nav-link scrollto" href="#">Testimonials</a></li>#}
 {#        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>#}
 {#          <ul>#}
@@ -85,14 +85,6 @@
   </div>
 </header>
 <!-- End Header -->
-
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-  <div class="container text-center text-md-left" data-aos="fade-up">
-    <h1>Welcome to <span>NFTBook</span></h1>
-    <h2>Not a facebook. Just wikis for NFTs</h2>
-  </div>
-</section><!-- End Hero -->
 
 <!-- ======= Content ======= -->
 <main id="main">
@@ -142,11 +134,9 @@
   <script src={% static "assets/vendor/isotope-layout/isotope.pkgd.min.js" %}></script>
   <script src={% static "assets/vendor/swiper/swiper-bundle.min.js" %}></script>
   <script src={% static "assets/vendor/waypoints/noframework.waypoints.js" %}></script>
-  <script src={% static "assets/vendor/php-email-form/validate.js" %}></script>
 
   <!-- Template Main JS File -->
   <script src={% static "assets/js/main.js" %}></script>
-  <script src="assets/js/main.js"></script>
 {% endblock js %}
 </body>
 </html>
